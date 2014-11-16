@@ -22,8 +22,6 @@ void setup() {
   server.listenOnLocalhost();
   server.begin();
   delay(3000);
-  setTime(22,35,0,18,9,2014);
-  delay(3000);
   intializeRelay(client, relayPin); //set the relay pin to OUTPUT and turn it off
 }
 
@@ -56,6 +54,12 @@ void process(YunClient client) {
   }
   if (command == "thermo") {
     thermoCommand(client);
+  }
+  if (command == "on") {
+    onCommand(client);
+  }
+  if (command == "off") {
+    offCommand(client);
   }
 
 }
@@ -222,3 +226,16 @@ void heaterCommand(YunClient client) {
  //   time_t t = now();
 }
 
+void onCommand(YunClient client) {
+  digitalWrite(relayPin,0);  
+  client.print(F("Pin D"));
+  client.print(relayPin);
+  client.print(F(" turned ON"));
+}
+
+void offCommand(YunClient client) {
+  digitalWrite(relayPin,1);  
+  client.print(F("Pin D"));
+  client.print(relayPin);
+  client.print(F(" turned OFF"));
+}
