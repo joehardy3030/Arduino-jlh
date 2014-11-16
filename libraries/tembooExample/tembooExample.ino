@@ -47,7 +47,7 @@
 // use #define statements to specify these values in a .h file.
 
 const String GOOGLE_USERNAME = "jlhardyphd@gmail.com";
-const String GOOGLE_PASSWORD = "philandfriends";
+const String GOOGLE_PASSWORD = "azjfsgddtpzuawcv"; //device specific password
 
 // the title of the spreadsheet you want to send data to
 // (Note that this must actually be the title of a Google spreadsheet
