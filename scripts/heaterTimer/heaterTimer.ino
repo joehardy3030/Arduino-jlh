@@ -1,20 +1,18 @@
 #include <Bridge.h>
+#include <Console.h>
 #include <YunServer.h>
 #include <YunClient.h>
-#include <dht.h>  
 #include <Time.h>
-
-#define dht_dpin A0 //no ; here. Set equal to channel sensor is on
 
 int heaterOn = 0;
 int heaterOff = 1;
-int relayPin = 2;
-dht DHT;
+int relayPin = 13;
+int m = millis();
 YunServer server;
 
 void setup() {
   YunClient client;
-  Serial.begin(9600);
+  Serial.begin(115200);
   pinMode(13,OUTPUT);
   digitalWrite(13, LOW);
   Bridge.begin();
@@ -23,6 +21,9 @@ void setup() {
   server.begin();
   delay(3000);
   intializeRelay(client, relayPin); //set the relay pin to OUTPUT and turn it off
+  Serial.println("Setup complete. Waiting for sensor input...\n");
+  Console.println("Setup complete. Waiting for sensor input...\n");
+  //joe$ ssh root@10.0.0.42 'telnet localhost 6571'
 }
 
 void loop() {
@@ -34,7 +35,7 @@ void loop() {
   }
 
   delay(3000);//Don't try to access too frequently... in theory
-
+ // Console.println("Loop\n");
 }
 
 void process(YunClient client) {
@@ -42,32 +43,45 @@ void process(YunClient client) {
 
   if (command == "digital") {
     digitalCommand(client);
-  }
+    client.println(F("digi"));
+    }
   if (command == "analog") {
     analogCommand(client);
   }
   if (command == "mode") {
     modeCommand(client);
   }
-  if (command == "heater") {
-    heaterCommand(client);
-  }
-  if (command == "thermo") {
-    thermoCommand(client);
-  }
   if (command == "on") {
     onCommand(client);
   }
-  if (command == "off") {
-    offCommand(client);
-  }
 
+}
+
+void onCommand(YunClient client) {
+  int pin, value;
+     
+  client.println(F("on"));
+
+ // pin = client.parseInt();
+  pin = relayPin; 
+  //eg http://10.0.0.42/arduino/digital/13/0
+  
+//  if (client.read() == '/') {
+//    value = client.parseInt();
+    value = 0;
+    writePin(client,pin,value);
+ // } 
+ //else {
+ //   value = digitalRead(pin);
+ // }
 }
 
 void digitalCommand(YunClient client) {
   int pin, value;
   pin = client.parseInt();
 
+  //eg http://10.0.0.42/arduino/digital/13/0
+  
   if (client.read() == '/') {
     value = client.parseInt();
     writePin(client,pin,value);
@@ -139,43 +153,6 @@ String mode = client.readStringUntil('\r');
   client.print(mode);
 }
 
-void thermoCommand(YunClient client) {
-  int pin, value;
- 
-  DHT.read11(dht_dpin);
-  pin = client.parseInt();
-
-  if (client.read() == '/') {
-    value = client.parseInt();
-    analogWrite(pin, value);
-
-    // Send feedback to client
-    client.print(F("Pin A"));
-    client.print(pin);
-    client.print(F(" set to analog "));
-    client.println(value);
-
-    String key = "A";
-    key += pin;
-    Bridge.put(key, String(value));
-  }
-  else {
-      value = analogRead(pin);
-      time_t t = now();
-      client.print(hour(t));
-      client.print(F(":"));
-      client.print(minute(t));
-      client.print(F(", "));
-      client.print((DHT.temperature*9/5)+32);
-      client.print(F(", "));
-      client.print(DHT.humidity);
-      client.println(F("%"));
-      String key = "A";
-      key += pin;
-      Bridge.put(key, String(value));
-  }
-}
-
 void writePin(YunClient client, int pin, int value) {
     time_t t = now();
     digitalWrite(pin, value);
@@ -209,33 +186,4 @@ void intializeRelay(YunClient client, int pin) {
    // return;
 }
 
-void heaterCommand(YunClient client) {
-  time_t t = now();
-  int pin, value;
-  pin = client.parseInt();
 
-  if (client.read() == '/') {
-    value = client.parseInt();
-    writePin(client,pin,value);
-    //client.println(second()-second(t));
-  } 
-  else {
-    value = digitalRead(pin);
-  }
-    
- //   time_t t = now();
-}
-
-void onCommand(YunClient client) {
-  digitalWrite(relayPin,0);  
-  client.print(F("Pin D"));
-  client.print(relayPin);
-  client.print(F(" turned ON"));
-}
-
-void offCommand(YunClient client) {
-  digitalWrite(relayPin,1);  
-  client.print(F("Pin D"));
-  client.print(relayPin);
-  client.print(F(" turned OFF"));
-}
