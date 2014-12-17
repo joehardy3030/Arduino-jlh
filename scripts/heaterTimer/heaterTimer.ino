@@ -59,9 +59,9 @@ void loop() {
     process(client);
     client.stop();
   }
-
-  delay(3000);//Don't try to access too frequently... in theory
-
+  
+  delay(100);//Don't try to access too frequently... in theory
+  
   if (digitalRead(relayPin) == heaterOn) {
     runAppendRow(); 
   }
@@ -115,8 +115,7 @@ void intializeRelay(YunClient client, int pin) {
 
 // Function to add data to Google Docs
 void runAppendRow() {
-  TembooChoreo AppendRowChoreo;
- 
+  TembooChoreo AppendRowChoreo; 
 
   // Invoke the Temboo client
   AppendRowChoreo.begin();
