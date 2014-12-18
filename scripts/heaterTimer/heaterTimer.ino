@@ -32,6 +32,7 @@ float temperature;
 Process date;
 
 unsigned long m = millis();
+unsigned long duration = 0;
 YunServer server;
 
 void setup() {
@@ -62,12 +63,9 @@ void loop() {
   
   delay(100);//Don't try to access too frequently... in theory
   
-  if (digitalRead(relayPin) == heaterOn) {
-    runAppendRow(); 
-  }
-  
-  if (digitalRead(relayPin) == heaterOn && (millis() - m) > (60000)) {
+  if (digitalRead(relayPin) == heaterOn && (millis() - m) > (duration)) {
     offCommand(client);
+    runAppendRow();
   }
 }
 
@@ -75,7 +73,15 @@ void process(YunClient client) {
   String command = client.readStringUntil('\r');
 
   if (command == "on") {
+    duration = 10*60*60;
     onCommand(client);
+  }
+  if (command == "on2") {
+    duration = 1000*60*60*2;
+    onCommand(client);
+  }
+  if (command == "append") {
+    appendCommand(client);
   }
   if (command == "off") {
     offCommand(client);
@@ -83,13 +89,55 @@ void process(YunClient client) {
 }
 
 void onCommand(YunClient client) {
+    // Restart the date process:
+  if (!date.running())  {
+    date.begin("date");
+    date.addParameter("+%D-%T");
+    date.run();
+   }
+  // Get date
   client.println(F("on"));
+  humidity = dht.readHumidity();
+  temperature = dht.readTemperature();
+  String timeString = date.readString(); 
+  client.print(timeString);
+  client.print("Temp: ");
+  client.print(temperature);
+  client.print("; Humidity: ");
+  client.println(humidity);
   m = millis();
   writePin(client, relayPin, heaterOn);
 }
 
+void appendCommand(YunClient client) {
+  client.println(F("append"));
+  humidity = dht.readHumidity();
+  temperature = dht.readTemperature();
+  String timeString = date.readString(); 
+  client.print(timeString);
+  client.print("Temp: ");
+  client.print(temperature);
+  client.print("; Humidity: ");
+  client.println(humidity);
+  client.println(millis() - m);
+  runAppendRow();
+}
+
 void offCommand(YunClient client) {
   client.println(F("off"));
+  humidity = dht.readHumidity();
+  temperature = dht.readTemperature();
+    if (!date.running())  {
+    date.begin("date");
+    date.addParameter("+%D-%T");
+    date.run();
+   }
+  String timeString = date.readString(); 
+  client.print(timeString);
+  client.print("Temp: ");
+  client.print(temperature);
+  client.print("; Humidity: ");
+  client.println(humidity);
   client.println(millis() - m);
   writePin(client, relayPin, heaterOff);
 }
