@@ -33,6 +33,7 @@ Process date;
 
 unsigned long m = millis();
 unsigned long duration = 0;
+unsigned long one_hour = 3600000;
 YunServer server;
 
 void setup() {
@@ -73,11 +74,11 @@ void process(YunClient client) {
   String command = client.readStringUntil('\r');
 
   if (command == "on") {
-    duration = 10*60*60;
+    duration = one_hour;
     onCommand(client);
   }
   if (command == "on2") {
-    duration = 1000*60*60*2;
+    duration = one_hour*2;
     onCommand(client);
   }
   if (command == "append") {
@@ -105,6 +106,8 @@ void onCommand(YunClient client) {
   client.print(temperature);
   client.print("; Humidity: ");
   client.println(humidity);
+  client.print("Duration: ");
+  client.println(duration);
   m = millis();
   writePin(client, relayPin, heaterOn);
 }
@@ -196,11 +199,16 @@ void runAppendRow() {
   String timeString = date.readString(); 
   humidity = dht.readHumidity();
   temperature = dht.readTemperature();
-
+  
+  String heater = "off";
+  if (digitalRead(relayPin) == heaterOn) {
+    heater = "on";
+  }
+  
   // Format data
   String data = "";
-  //data = data + timeString + "," + String(analogLevel);
-  data = data + timeString + "," + temperature + "," + humidity;
+  
+  data = data + timeString + "," + temperature + "," + humidity + "," + heater;
   
   // Set Choreo inputs
   AppendRowChoreo.addInput("RowData", data);
