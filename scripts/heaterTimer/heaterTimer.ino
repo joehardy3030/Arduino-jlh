@@ -110,6 +110,9 @@ void onCommand(YunClient client) {
   client.println(duration);
   m = millis();
   writePin(client, relayPin, heaterOn);
+  client.stop();
+  while(client.connected());
+  runAppendRow();
 }
 
 void appendCommand(YunClient client) {
@@ -123,6 +126,8 @@ void appendCommand(YunClient client) {
   client.print("; Humidity: ");
   client.println(humidity);
   client.println(millis() - m);
+  client.stop();
+  while(client.connected());
   runAppendRow();
 }
 
