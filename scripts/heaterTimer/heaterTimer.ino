@@ -112,6 +112,7 @@ void onCommand(YunClient client) {
   writePin(client, relayPin, heaterOn);
   client.stop();
   while(client.connected());
+  //delay(3000);
   runAppendRow();
 }
 
