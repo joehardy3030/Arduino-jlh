@@ -81,6 +81,10 @@ void process(YunClient client) {
     duration = one_hour*2;
     onCommand(client);
   }
+  if (command == "on3") {
+    duration = one_hour*3;
+    onCommand(client);
+  }
   if (command == "append") {
     appendCommand(client);
   }
@@ -111,9 +115,9 @@ void onCommand(YunClient client) {
   m = millis();
   writePin(client, relayPin, heaterOn);
   client.stop();
-  while(client.connected());
+//  while(client.connected());
   //delay(3000);
-  runAppendRow();
+//  runAppendRow();
 }
 
 void appendCommand(YunClient client) {
@@ -147,8 +151,11 @@ void offCommand(YunClient client) {
   client.print(temperature);
   client.print("; Humidity: ");
   client.println(humidity);
-  client.println(millis() - m);
+  client.print("Duration: ");
+  client.print((millis() - m)/(60000));
+  client.println(" min");
   writePin(client, relayPin, heaterOff);
+  client.stop();
 }
 
 void writePin(YunClient client, int pin, int value) {
