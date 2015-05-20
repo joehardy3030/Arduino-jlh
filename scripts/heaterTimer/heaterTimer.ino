@@ -1,5 +1,5 @@
 // This program is designed to control a relay to turn a heater on and off
-// joe$ ssh root@10.0.0.42 'telnet localhost 6571'
+// joe$ ssh root@10.0.0.12 'telnet localhost 6571'
 
 #include <Temboo.h>
 #include <Bridge.h>
@@ -64,7 +64,7 @@ void loop() {
   
   delay(100);//Don't try to access too frequently... in theory
   
-  if (digitalRead(relayPin) == heaterOn && (millis() - m) > (duration)) {
+  if (digitalRead(relayPin) == heaterOn && (millis() - m) > (duration)) {    
     offCommand(client);
     runAppendRow();
   }
