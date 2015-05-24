@@ -11,8 +11,6 @@ import UIKit
 class ViewController: UIViewController {
 
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -20,11 +18,35 @@ class ViewController: UIViewController {
 
     
     @IBAction func heaterOn() {
-        let alertController = UIAlertController(title: "Heater On", message: "Heater On",
-            preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alertController, animated: true, completion: nil)
+        if let url = NSURL(string: "http://10.0.0.12/arduino/on3") {
+            UIApplication.sharedApplication().openURL(url)
+        }
+    }
+    
+    @IBAction func heaterOff() {
+        if let url = NSURL(string: "http://10.0.0.12/arduino/off") {
+            UIApplication.sharedApplication().openURL(url)
+        }
     }
 
+    @IBAction func garageDoor() {
+        if let url = NSURL(string: "http://10.0.0.20/arduino/press") {
+            UIApplication.sharedApplication().openURL(url)
+        }
+    }
+
+    @IBAction func outletOff() {
+        if let url = NSURL(string: "http://10.0.0.20/arduino/outletOff") {
+            UIApplication.sharedApplication().openURL(url)
+        }
+    }
+
+    @IBAction func outletOn() {
+        if let url = NSURL(string: "http://10.0.0.20/arduino/outletOn") {
+            UIApplication.sharedApplication().openURL(url)
+        }
+    }
+
+    
 }
 
