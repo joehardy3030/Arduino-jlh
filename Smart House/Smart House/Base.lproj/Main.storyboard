@@ -28,7 +28,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2gP-RP-n2H">
-                                <rect key="frame" x="136" y="175" width="102" height="30"/>
+                                <rect key="frame" x="136" y="167" width="102" height="30"/>
                                 <color key="backgroundColor" red="0.21725816522138769" green="0.40051709838133037" blue="0.61211726639999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Heater Off">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -39,7 +39,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6jP-nW-FeK">
-                                <rect key="frame" x="136" y="338" width="102" height="30"/>
+                                <rect key="frame" x="136" y="333" width="102" height="30"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <state key="normal" title="Outlet Off">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -49,19 +49,8 @@
                                     <action selector="outletOff" destination="BYZ-38-t0r" eventType="touchUpInside" id="1d0-dQ-pah"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eqw-kz-e5T">
-                                <rect key="frame" x="136" y="285" width="102" height="30"/>
-                                <color key="backgroundColor" red="0.23743037174155734" green="0.61211726639999997" blue="0.22719822720450211" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Outlet On">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="outletOn" destination="BYZ-38-t0r" eventType="touchUpInside" id="E1l-KK-8y9"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wqv-Lp-duo">
-                                <rect key="frame" x="136" y="444" width="102" height="30"/>
+                                <rect key="frame" x="136" y="420" width="102" height="30"/>
                                 <color key="backgroundColor" red="0.46543863629548532" green="0.69109248935332501" blue="0.97234059343434343" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Garage Door">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -71,14 +60,40 @@
                                     <action selector="garageDoor" destination="BYZ-38-t0r" eventType="touchUpInside" id="qme-qh-qsB"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v6U-Wv-KBI">
+                                <rect key="frame" x="141" y="269" width="93" height="42"/>
+                                <color key="backgroundColor" red="0.38770846983890517" green="1" blue="0.15930830488219627" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Outlet On">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="outletOn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PBZ-6k-zwh"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SmartHouse" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvl-Qp-ow2">
+                                <rect key="frame" x="114" y="20" width="150" height="50"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" red="0.28642631439999999" green="0.33700340620000002" blue="0.69361584600000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Go!" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VW6-Pz-gX5">
+                                <rect key="frame" x="120" y="493" width="226" height="147"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="textLabel" destination="VW6-Pz-gX5" id="yTB-pU-Gn5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="100" y="320"/>
+            <point key="canvasLocation" x="-57.5" y="299.5"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
