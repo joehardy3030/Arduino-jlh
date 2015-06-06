@@ -131,53 +131,6 @@ void pressCommand(YunClient client) {
   client.stop();
 }
 
-void fanOnCommand(YunClient client) {
-    // Restart the date process:
-  if (!date.running())  {
-    date.begin("date");
-    date.addParameter("+%D-%T");
-    date.run();
-   }
-  // get humidity and temp
-  humidity = dht.readHumidity();
-  temperature = (dht.readTemperature() *(9.0/5.0)) + 32.0;
-  String timeString = date.readString(); 
-  
-  client.println(F("on"));
-  client.print(timeString);
-  client.print("Temp: ");
-  client.print(temperature);
-  client.print("; Humidity: ");
-  client.println(humidity);
-  client.print("Duration: ");
-  client.println(duration);
-  m = millis();
-  writePin(client, fanRelayPin, relayOn);
-  client.stop();
-}
-
-void fanOffCommand(YunClient client) {
-  client.println(F("off"));
-  humidity = dht.readHumidity();
-  temperature = (dht.readTemperature() *(9.0/5.0)) + 32.0;
-    if (!date.running())  {
-    date.begin("date");
-    date.addParameter("+%D-%T");
-    date.run();
-   }
-  String timeString = date.readString(); 
-  client.print(timeString);
-  client.print("Temp: ");
-  client.print(temperature);
-  client.print("; Humidity: ");
-  client.println(humidity);
-  client.print("Duration: ");
-  client.print((millis() - m)/(60000));
-  client.println(" min");
-  writePin(client, fanRelayPin, rz`QA~FXR´DHN  XV   xzdzszza2szwSWZ@swxelayOff);
-  client.stop();
-}
-
 void appendCommand(YunClient client) {
   client.println(F("append"));
   humidity = dht.readHumidity();
@@ -193,7 +146,6 @@ void appendCommand(YunClient client) {
   while(client.connected());
   runAppendRow();
 }
-
 
 // Function to add data to Google Docs
 void runAppendRow() {

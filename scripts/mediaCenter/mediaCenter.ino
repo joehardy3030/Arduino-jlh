@@ -143,21 +143,21 @@ void outletOnCommand(YunClient client) {
   temperature = (dht.readTemperature() *(9.0/5.0)) + 32.0;
   String timeString = date.readString(); 
   
-  client.println(F("on"));
+  client.println(F("Stereo power on"));
   client.print(timeString);
   client.print("Temp: ");
   client.print(temperature);
   client.print("; Humidity: ");
   client.println(humidity);
   client.print("Duration: ");
-  client.println(duration);
+  client.println(duration/(60000));
   m = millis();
   writePin(client, outletRelayPin, relayOn);
   client.stop();
 }
 
 void outletOffCommand(YunClient client) {
-  client.println(F("off"));
+  client.println(F("Stereo power off"));
   humidity = dht.readHumidity();
   temperature = (dht.readTemperature() *(9.0/5.0)) + 32.0;
     if (!date.running())  {

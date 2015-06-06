@@ -1,3 +1,4 @@
+
 // This program is designed to control a relay to turn a heater on and off
 // joe$ ssh root@10.0.0.12 'telnet localhost 6571'
 
@@ -7,6 +8,7 @@
 #include <YunClient.h>
 #include <YunServer.h>
 #include "DHT.h"
+
            
 // DHT11 sensor pins
 #define DHTPIN A0 
@@ -93,7 +95,7 @@ void onCommand(YunClient client) {
     date.run();
    }
   // Get date
-  client.println(F("on"));
+  client.println(F("Heater on"));
   humidity = dht.readHumidity();
   temperature = (dht.readTemperature() *(9.0/5.0)) + 32.0;
   String timeString = date.readString(); 
@@ -121,7 +123,7 @@ void offCommand(YunClient client) {
   temperature = (dht.readTemperature() *(9.0/5.0)) + 32.0;
   String timeString = date.readString(); 
   
-  client.println(F("off"));
+  client.println(F("Heater off"));
   client.print(timeString);
   client.print("Temp: ");
   client.print(temperature);
@@ -145,6 +147,7 @@ void tempCommand(YunClient client) {
   humidity = dht.readHumidity();
   temperature = (dht.readTemperature() *(9.0/5.0)) + 32.0;
   String timeString = date.readString(); 
+   client.println("Basement climate");
   client.print(timeString);
   client.print("Temp: ");
   client.print(temperature);
