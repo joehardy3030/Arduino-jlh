@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		D809B7C01B0FFF8300959A7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D809B7BF1B0FFF8300959A7D /* AppDelegate.swift */; };
-		D809B7C21B0FFF8300959A7D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D809B7C11B0FFF8300959A7D /* ViewController.swift */; };
 		D809B7C51B0FFF8300959A7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D809B7C31B0FFF8300959A7D /* Main.storyboard */; };
 		D809B7C71B0FFF8300959A7D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D809B7C61B0FFF8300959A7D /* Images.xcassets */; };
 		D809B7CA1B0FFF8300959A7D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D809B7C81B0FFF8300959A7D /* LaunchScreen.xib */; };
 		D809B7D61B0FFF8300959A7D /* Smart_HouseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D809B7D51B0FFF8300959A7D /* Smart_HouseTests.swift */; };
+		D832EDE41B23C4540074F2B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D832EDE31B23C4540074F2B9 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,13 +29,13 @@
 		D809B7BA1B0FFF8300959A7D /* Smart House.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smart House.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D809B7BE1B0FFF8300959A7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D809B7BF1B0FFF8300959A7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D809B7C11B0FFF8300959A7D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D809B7C41B0FFF8300959A7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D809B7C61B0FFF8300959A7D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D809B7C91B0FFF8300959A7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		D809B7CF1B0FFF8300959A7D /* Smart HouseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Smart HouseTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D809B7D41B0FFF8300959A7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D809B7D51B0FFF8300959A7D /* Smart_HouseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Smart_HouseTests.swift; sourceTree = "<group>"; };
+		D832EDE31B23C4540074F2B9 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../../../../Desktop/ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				D809B7BF1B0FFF8300959A7D /* AppDelegate.swift */,
-				D809B7C11B0FFF8300959A7D /* ViewController.swift */,
+				D832EDE31B23C4540074F2B9 /* ViewController.swift */,
 				D809B7C31B0FFF8300959A7D /* Main.storyboard */,
 				D809B7C61B0FFF8300959A7D /* Images.xcassets */,
 				D809B7C81B0FFF8300959A7D /* LaunchScreen.xib */,
@@ -213,7 +213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D809B7C21B0FFF8300959A7D /* ViewController.swift in Sources */,
+				D832EDE41B23C4540074F2B9 /* ViewController.swift in Sources */,
 				D809B7C01B0FFF8300959A7D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
