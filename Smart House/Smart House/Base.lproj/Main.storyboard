@@ -41,7 +41,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6jP-nW-FeK">
-                                <rect key="frame" x="194" y="200" width="170" height="60"/>
+                                <rect key="frame" x="194" y="196" width="170" height="60"/>
                                 <color key="backgroundColor" red="0.3137427539" green="0.27816719229999998" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Outlet Off">
@@ -53,7 +53,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wqv-Lp-duo">
-                                <rect key="frame" x="102" y="286" width="170" height="60"/>
+                                <rect key="frame" x="101" y="369" width="170" height="60"/>
                                 <color key="backgroundColor" red="0.46543863629548532" green="0.69109248935332501" blue="0.97234059343434343" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Garage Door">
@@ -65,7 +65,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v6U-Wv-KBI">
-                                <rect key="frame" x="16" y="200" width="170" height="60"/>
+                                <rect key="frame" x="16" y="196" width="170" height="60"/>
                                 <color key="backgroundColor" red="1" green="0.45331082883902341" blue="0.45205434123864163" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Outlet On">
@@ -89,13 +89,26 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZGM-Wh-TpV">
-                                <rect key="frame" x="102" y="368" width="170" height="60"/>
+                                <rect key="frame" x="16" y="280" width="170" height="60"/>
                                 <color key="backgroundColor" red="0.25494696256519545" green="1" blue="0.45395489575748127" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Spotify">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="openSpotify:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oWl-jd-Eae"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RNd-jo-kRU">
+                                <rect key="frame" x="194" y="280" width="170" height="60"/>
+                                <color key="backgroundColor" red="0.67666088614816522" green="0.57973128764705839" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Archive.org">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="openArchiveOrg:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UUK-He-5oo"/>
                                 </connections>
                             </button>
                         </subviews>
