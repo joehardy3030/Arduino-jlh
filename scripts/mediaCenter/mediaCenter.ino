@@ -82,10 +82,10 @@ void process(YunClient client) {
     tvOnCommand(client);
   }
   if (command == "TVvolUp") {
-    tvVolumeUp(client);
+    tvVolumeUp();
   }
   if (command == "TVvolDown") {
-    tvVolumeDown(client);
+    tvVolumeDown();
   }
 }
 
@@ -119,29 +119,21 @@ void tempPrint(YunClient client) {
 }  
 
 void tvOnCommand(YunClient client) {
+   irsend.sendPanasonic(PanasonicAddress,PanasonicPower); // This should turn your TV on and off
   client.println(F("TV on/off"));
   datePrint(client); // Print date
   tempPrint(client); // Temp date
-  irsend.sendPanasonic(PanasonicAddress,PanasonicPower); // This should turn your TV on and off
   client.stop();
  }
 
-void tvVolumeUp(YunClient client) {
-  client.println(F("TV vol up"));
-  datePrint(client); // Print date
-  tempPrint(client); // Temp date
+void tvVolumeUp() {
   irsend.sendPanasonic(PanasonicAddress,PVPlus); // This should turn your TV on and off
-  client.stop();
- }
-
-void tvVolumeDown(YunClient client) {
-  client.println(F("TV vol down"));
-  datePrint(client); // Print date
-  tempPrint(client); // Temp date
-  irsend.sendPanasonic(PanasonicAddress,PVMinus); // This should turn TV volume down
-  client.stop();
  }
  
+void tvVolumeDown() {
+  irsend.sendPanasonic(PanasonicAddress,PVMinus);
+}
+
 void pressCommand(YunClient client) {
   writePin(client, doorRelayPin, buttonDown);
   delay(1000);
@@ -153,24 +145,24 @@ void pressCommand(YunClient client) {
 }
 
 void outletOnCommand(YunClient client) {
+  m = millis();
+  writePin(client, outletRelayPin, relayOn);
   client.println(F("Stereo power on"));
   datePrint(client); // Print date
   tempPrint(client); // Temp date
   client.print("Duration: ");
   client.println(duration/(60000));
-  m = millis();
-  writePin(client, outletRelayPin, relayOn);
   client.stop();
 }
 
 void outletOffCommand(YunClient client) {
+  writePin(client, outletRelayPin, relayOff);
   client.println(F("Stereo power off"));
   datePrint(client); // Print date
   tempPrint(client); // Temp date
   client.print("Duration: ");
   client.print((millis() - m)/(60000));
   client.println(" min");
-  writePin(client, outletRelayPin, relayOff);
   client.stop();
 }
 
