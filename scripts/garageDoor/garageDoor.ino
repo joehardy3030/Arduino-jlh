@@ -63,9 +63,9 @@ void loop() {
     client.stop();
   }
   delay(100);//Don't try to access too frequently... in theory
-  if (digitalRead(doorRelayPin) == buttonDown && (millis() - m) > (duration)) {    
-    fanOffCommand(client);
-  }
+//  if (digitalRead(doorRelayPin) == buttonDown && (millis() - m) > (duration)) {    
+ //   fanOffCommand(client);
+ // }
 }
 
 void process(YunClient client) {
@@ -75,13 +75,13 @@ void process(YunClient client) {
     duration = one_hour;
     pressCommand(client);
   }
-  if (command == "fanOn") {
-    duration = one_hour;
-    fanOnCommand(client);
-  }
-  if (command == "fanOff") {
-    fanOffCommand(client);
-  }
+//  if (command == "fanOn") {
+//    duration = one_hour;
+ //   fanOnCommand(client);
+ // }
+//  if (command == "fanOff") {
+ //   fanOffCommand(client);
+//  }
   if (command == "append") {
     appendCommand(client);
   }
@@ -218,4 +218,3 @@ void runAppendRow() {
   
   AppendRowChoreo.close(); 
 }
-
